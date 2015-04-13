@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle: \"Project3\"\nauthor: \"Nathan Waters, Lerone Williams\"\ndate: \"Tuesday, March 3, 2015\"\noutput: html_document\n---\n\nIn this R Markdown document we will display and document each step of CS329e R Project 3 .\n\nProject Requirements <http://www.cs.utexas.edu/~cannata/dataVis/Projects/R%20Project%203/R%20Project%20Requirements.html>.\n\nIn the source folder 01 Data, the R script Access Oracle Database.R was created to connect to Dr. Cannata's Orcale database and generate a data frame from the uploaded ABOVE4CALI.csv and ABOVE4OU.csv files. First the data was pulled using a join SQL query, then the two datasets were piped to ggplot to display the results. The RCurl and jsonlite package were loaded to allow general HTTP requests and process the results returned by the Web server.\n\n```{r}\nsource(\"../01 Data/Access Oracle Database.R\", echo = TRUE)\n```\n\nThis screen capture depicts the actual area represented in the Above4OU dataset.\n\n![](./Screen1.png) \n\nThis screen capture depicts the actual are represented in the Above4CALI dataset.\n\n![](./Screen2.png)\n\n\nA second R script Subset.R was created to display the quake data frame that was previously created in the last step. The head(), tail(), tbl_df(), glimpse(), summary(), and str() functions were used to return subsets of this data frame. \n\n```{r}\nsource(\"../01 Data/Subset Data.R\", echo = TRUE)\n\n```\n\nIn this data wrangling section, several work flows are constructed using the %>% pipe operator, ggplot and join functions listed in the \"Combine Data Sets\" column of the Data Wrangling Cheatsheet. Specifically, left_join(), right_join(), innner_join(), full_join(), semi_join(), and anti_join() are used to combine and plot the ABOVE4CALI and ABOVE4OU datasets.\n\n```{r}\nsource(\"../02 Data Wrangling/Joining Data.R\", echo = TRUE)\n```\n\nThese next visualizations display our wrangled data sets incorporating\nBeautiful Plotting.\n\n```{r}\nsource(\"../02 Data Wrangling/Data Wrangling.R\", echo = TRUE)\n```\n\nThis source code was created to display a collection of data plots as one PNG image.\n\n```{r}\n#source(\"../03 Visualizations/PNG .R\", echo = TRUE)\n```\n\nA characterization of the categorical columns as group by plots.\n\n![](./categoricals.png) \n\n\nA characterization of the measure columns as histograms. \n\n![](./categoricals2.png) \n",
+    "created" : 1428677404708.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3672379042",
+    "id" : "88E0EF7D",
+    "lastKnownWriteTime" : 1425913988,
+    "path" : "~/GitHub/DV_RProject3/DV_RProject3/00 Doc/Project3.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

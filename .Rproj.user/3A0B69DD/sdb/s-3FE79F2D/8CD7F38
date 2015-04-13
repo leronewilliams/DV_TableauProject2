@@ -1,0 +1,17 @@
+{
+    "contents" : "---\ntitle: \"Project5\"\nauthor: \"Syairah Ridzuan, Nathan Waters, Lerone Williams\"\ndate: \"Friday, April 10, 2015\"\noutput: html_document\n---\n\nIn this R Markdown document we will display and document each step of CS329e R Project 5.\n\nProject Requirements <http://www.cs.utexas.edu/~cannata/dataVis/Projects/Tableau%20Project%202/R%20Project%20Requirements.html>.\n\n\n\nIn the source folder 01 Data, the R script Access Oracle Database.R was created to connect to Dr. Cannata's Orcale database and generate a data frame from the uploaded ABOVE4CALI.csv and ABOVE4OU.csv files. First the data was pulled using a join SQL query, then the two datasets were piped to ggplot to display the results. The RCurl and jsonlite package were loaded to allow general HTTP requests and process the results returned by the Web server.\n\n```{r}\nsummary(cars)\n```\n\nYou can also embed plots, for example:\n\n```{r, echo=FALSE}\nplot(cars)\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "created" : 1428677478087.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1441490066",
+    "id" : "8CD7F38",
+    "lastKnownWriteTime" : 1428937644,
+    "path" : "~/GitHub/DV_TableauProject2/00 Doc/Project5.Rmd",
+    "project_path" : "00 Doc/Project5.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

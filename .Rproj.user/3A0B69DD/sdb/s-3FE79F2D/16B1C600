@@ -1,0 +1,16 @@
+{
+    "contents" : "require(\"RCurl\")\nrequire(\"jsonlite\")\nmine <- data.frame(fromJSON(getURL(URLencode(gsub(\"\\n\", \" \", '129.152.144.84:5001/rest/native/?query=\"select * from FT where origin = \\\\\\'JFK\\\\\\' \"')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nm22335', PASS='orcl_nm22335', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE)))",
+    "created" : 1428679430712.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4196357013",
+    "id" : "16B1C600",
+    "lastKnownWriteTime" : 1428677096,
+    "path" : "C:/Users/Lerone Williams/Desktop/T2.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
