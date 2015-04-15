@@ -21,6 +21,7 @@ tbl_df(last_value)
 
 
 
+
 #query works in sql but not in r - CHECK
 # max_value - carriers with most delays. Can't do rank and pull total number of records for each 
 max_value <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query="
@@ -50,20 +51,18 @@ from ( Select dest, AVG(airtime) AS avg_airtime FROM FT where origin = \\\'JFK\\
 order by 2 "')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nm22335', PASS='orcl_nm22335', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE)));
 tbl_df(cumedist)
 
-time_efficiency <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query= "SELECT dest, uniquecarrier, min_airtime, max_airtime, Diff_airtime, rank() 
-OVER (PARTITION BY dest, uniquecarrier order by Diff_airtime desc) as AirTimeDuration_Rank
-FROM (SELECT dest, uniquecarrier, 
-first_value(airtime) IGNORE NULLS OVER (PARTITION BY dest, uniquecarrier ORDER BY airtime) AS min_airtime,
-last_value(airtime) IGNORE NULLS OVER (PARTITION BY dest, uniquecarrier ORDER BY airtime) AS max_airtime,
-last_value(airtime) IGNORE NULLS OVER (PARTITION BY dest, uniquecarrier ORDER BY airtime) -
-first_value(airtime) IGNORE NULLS OVER (PARTITION BY dest, uniquecarrier ORDER BY airtime) AS Diff_airtime 
-FROM ( 
-SELECT dest, uniquecarrier, airtime FROM FT WHERE origin = \\\'JFK\\\' AND cancelled = 0 )
-ORDER BY DEST, uniquecarrier)
-WHERE AirTimeDuration_Rank = 1
-"')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nm22335', PASS='orcl_nm22335', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE)));
-tbl_df(time_efficiency)
 
 
 
+#determining the airtime  uniquecarriers relative to the max_airtime for a certain dist
+lastval_dif <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
+"select dest, uniquecarrier, airtime, last_value(max_airtime)
+OVER (PARTITION BY dest) AS max_airtime, last_value(max_airtime)
+OVER (PARTITION BY dest, uniquecarrier) - airtime  AS aberration
+FROM
+(SELECT dest, uniquecarrier, airtime, max(airtime)
+OVER (PARTITION BY dest, uniquecarrier) AS max_airtime
+FROM FT where origin = \\\'JFK\\\' AND cancelled = 0 AND (sdelay = 0 OR sdelay IS NULL) AND (weatherdelay = 0 OR weatherdelay IS NULL ) AND (securitydelay = 0 OR securitydelay IS NULL)) "')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521:ORCL', USER='C##cs329e_nm22335', PASS='orcl_nm22335', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE))); tbl_df(lastval_dif)
 
+
+#ps : will try more for difference, couldn't find anything interesting - since we can't do SUM() and only difference .. Let me know if you have any idea
