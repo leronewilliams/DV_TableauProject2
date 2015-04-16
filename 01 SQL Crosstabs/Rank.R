@@ -1,7 +1,7 @@
 require('RCurl')
 require("jsonlite")
-require('dplyr')
 require('plyr')
+require('dplyr')
 require('tidyr')
 
 #rank top_destinations for each uniquecarrier
