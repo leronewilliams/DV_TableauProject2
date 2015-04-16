@@ -9,28 +9,92 @@ In this R Markdown document we will display and document each step of CS329e R P
 
 Project Requirements <http://www.cs.utexas.edu/~cannata/dataVis/Projects/Tableau%20Project%202/R%20Project%20Requirements.html>.
 
+The dataset for this project pertains to airline on-time performance for airports throughout United States. To reduce the sheer volume of records, we choose to focus the analysis on data only from JFK. utilizing Tableau to created visualization of the relationships we uncovered.
 
-
-In the source folder 01 Data, the R script Access Oracle Database.R was created to connect to Dr. Cannata's Orcale database and generate a data frame from the uploaded ABOVE4CALI.csv and ABOVE4OU.csv files. First the data was pulled using a join SQL query, then the two datasets were piped to ggplot to display the results. The RCurl and jsonlite package were loaded to allow general HTTP requests and process the results returned by the Web server.
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
+***Distance vs Average Delay***
 
 ![](./Relation-DistancetoAverageDelay.png)
+
+***Avg(Delay) vs Age of Aircraft***
+
 ![](./LineGraph-Avg(Delay)vsAge.png)
+
+***Age of Aircraft vs Delay***
+
 ![](./Box&Whishkers-AgevsDelay.png)
+
+***Carrier vs Avg(Delay)***
+
 ![](./BarGraph-CarriervsAvg(Delay).png)
+
+
+![](./[not_for_crosstab]Carrierswithmostdelays.png)
+
+***Crosstabs rank()***
+
+```{r}
+source("../01 SQL Crosstabs/Rank.R", echo = TRUE)
+```
+
+![](./Rank(top_destinations).png)
+
+![](./[Viz]FarthestDistance.png)
+
+***Crosstabs last_value()/max_value and difference***
+
+```{r}
+source("../01 SQL Crosstabs/lastval_dif.R", echo = TRUE)
+```
+
+![](./Lastvalue_difference.png)
+
+***Crosstabs nth_value***
+
+```{r}
+source("../01 SQL Crosstabs/Nthval.R", echo = TRUE)
+```
+
+![](./NthValue_Highescancellationbymonths.png)
+
+![](./[Viz]NthValue_Highescancellationbymonths.png)
+
+
+***Crosstabs cume_dist***
+
+```{r}
+source("../01 SQL Crosstabs/cumedist.R", echo = TRUE)
+```
+
+![](./Cume_dist.png)
+
+
+![](./[Viz]Cume_dist.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
