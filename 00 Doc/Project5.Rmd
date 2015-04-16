@@ -24,3 +24,15 @@ plot(cars)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+![](./Relation-DistancetoAverageDelay.png)
+![](./LineGraph-Avg(Delay)vsAge.png)
+![](./Box&Whishkers-AgevsDelay.png)
+![](./BarGraph-CarriervsAvg(Delay).png)
+
+
+
+
+
